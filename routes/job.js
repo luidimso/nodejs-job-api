@@ -1,11 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const { getJobs } = require("../controllers/jobController");
 
-router.get("/jobs", (req, res) => {
-    res.status(200).json({
-        success: true,
-        message: "Testing"
-    });
-});
+router.route("/jobs").get(getJobs);
 
 module.exports = router;
