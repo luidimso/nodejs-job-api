@@ -7,6 +7,13 @@ dotenv.config({
     path: "./config/config.env"
 });
 
+const middleware = (req, res, next) => {
+    console.log("Middleware");
+    next();
+}
+
+app.use(middleware);
+
 app.use("/api/v1", jobs);
 
 app.listen(process.env.PORT, () => {
