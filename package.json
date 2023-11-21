@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-job-api",
+  "version": "1.0.0",
+  "description": "NodeJS course",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/luidimso/nodejs-job-api.git"
+  },
+  "author": "Luidi Matheus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luidimso/nodejs-job-api/issues"
+  },
+  "homepage": "https://github.com/luidimso/nodejs-job-api#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  }
+}
