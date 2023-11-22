@@ -47,11 +47,11 @@ exports.updateJob = async (req, res, next) => {
             sucess: false,
             message: "Job not found"
         });
+    } else {
+        res.status(200).json({
+            sucess: true,
+            message: "Job created",
+            data: jobs
+        });
     }
-
-    res.status(200).json({
-        sucess: true,
-        message: "Job created",
-        data: jobs
-    });
 }
