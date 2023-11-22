@@ -30,15 +30,24 @@ exports.updateJob = async (req, res, next) => {
     const fileContent = await fs.readFile(absPath);
     let jobs = JSON.parse(fileContent);
     const id = req.params["id"];
+    let wasJobFound = false;
 
     jobs.map((job) => {
         if(job.id == id) {
             job.position = req.body.position;
             job.description = req.body.description
+            wasJobFound = true;
         }
 
         return job
     });
+
+    if(!wasJobFound) {
+        res.status(404).json({
+            sucess: false,
+            message: "Job not found"
+        });
+    }
 
     res.status(200).json({
         sucess: true,
