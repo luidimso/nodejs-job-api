@@ -1,5 +1,6 @@
 const fs = require('node:fs/promises');
 const path = require('path');
+const ErrorHandler = require("../utils/errorHandler");
 
 const absPath = path.join(__dirname, '../database/jobs.json');
 
@@ -43,14 +44,11 @@ exports.updateJob = async (req, res, next) => {
     });
 
     if(!wasJobFound) {
-        res.status(404).json({
-            sucess: false,
-            message: "Job not found"
-        });
+        return next(new ErrorHandler("Job not found", 404));
     } else {
         res.status(200).json({
             sucess: true,
-            message: "Job created",
+            message: "Job updated",
             data: jobs
         });
     }
