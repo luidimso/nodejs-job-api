@@ -3,19 +3,17 @@ const path = require('path');
 
 const absPath = path.join(__dirname, '../database/jobs.json');
 
-exports.getJobs = (req, res, next) => {
-    res.status(200).json({
-        success: true,
-        message: "Testing"
-    });
+exports.getJobs = async (req, res, next) => {
+    const fileContent = await fs.readFile(absPath);
+    const jobs = JSON.parse(fileContent);
+
+    res.status(200).json(jobs);
 }
 
 exports.newJob = async (req, res, next) => {
     const fileContent = await fs.readFile(absPath);
     const jobs = JSON.parse(fileContent);
     const job = req.body;
-
-    console.log(req.body);
 
     jobs.push(job);
 
