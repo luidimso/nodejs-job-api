@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const jobs = require("./routes/job.js");
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
 
 dotenv.config({
     path: "./config/config.env"
