@@ -24,3 +24,11 @@ app.use(errorMidleware);
 app.listen(process.env.PORT, () => {
     console.log("Server started on port "+process.env.PORT+" in env "+process.env.NODE_ENV);
 });
+
+process.on('unhandledRejection', err => {
+    console.log(`Error: ${err.message}`);
+    console.log('Shutting down the server due to Unhandled promise rejection.')
+    server.close( () => {
+        process.exit(1);
+    }) 
+});
